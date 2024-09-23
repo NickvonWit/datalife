@@ -52,6 +52,9 @@
 
 #define TRACKFILECHANGES 1 // tmp-ly added
 
+#ifndef _STAT_VER
+#define _STAT_VER 1
+#endif
 class CleanupTrackFile {
 public:
   CleanupTrackFile(){}
