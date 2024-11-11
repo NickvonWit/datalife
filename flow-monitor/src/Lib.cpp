@@ -53,7 +53,13 @@
 #define TRACKFILECHANGES 1 // tmp-ly added
 
 #ifndef _STAT_VER
+#if defined (__aarch64__)
+#define _STAT_VER 0
+#elif defined (__x86_64__)
 #define _STAT_VER 1
+#else
+#define _STAT_VER 3
+#endif
 #endif
 class CleanupTrackFile {
 public:

@@ -3,3 +3,6 @@ tags
 *.swp
 cscope.out
 /build
+# also ignore any build directories
+*/build
+README-Install.md
