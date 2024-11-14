@@ -1,7 +1,7 @@
-from datalife import DataLife
-from datalife import data_branches_and_task_joins
-from datalife import producer_consumer_ranking_table
-from sankeydata import SankeyData
+from datalife.analyze import DataLife
+from datalife.analyze import data_branches_and_task_joins
+from datalife.analyze import producer_consumer_ranking_table
+from datalife.sankeydata import SankeyData
 import os
 import argparse
 from pprint import pprint
@@ -17,7 +17,7 @@ class Evaluate:  # Changed class name to follow convention
     def __init__(self, dl, dir):
         self.dlife = dl
         self.directory = dir
-        run_all(self, self.directory)
+        self.run_all(self.directory)
 
 
     def run_all(self, output):
@@ -38,7 +38,6 @@ class Evaluate:  # Changed class name to follow convention
 
         sd = SankeyData()
         sd.import_graph(caterpillar)
-        self.verbose_msg("Generating 1kgenomes-ctree.pdf", indent=4)
         sd.plot(options={'no_label':True, 'save_image':output + self.ctree})
 
 

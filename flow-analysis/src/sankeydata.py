@@ -188,7 +188,7 @@ class SankeyData:
         if branch_join is not None:
             highlight_color2 = branch_join
 
-        from datalife import get_critical_path_edges
+        from datalife.analyze import get_critical_path_edges
         self.links['color'] = _highlight_edge_color(G, get_critical_path_edges(G), highlight_color1, highlight_color2)
 
 
