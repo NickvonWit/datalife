@@ -7,13 +7,11 @@ Author: Hyungro Lee, Lenny Guo, Jesun Firoz, Nathan R. Tallent
 Author-email: <firstname>.<lastname>@pnnl.gov
 License: BSD
 Keywords: distributed workflows,performance analysis,data flow lifecycles,storage bottlenecks,caterpillar tree
+Platform: UNKNOWN
 Classifier: Programming Language :: Python
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: BSD License
 Classifier: Development Status :: 4 - Beta
-Requires-Dist: networkx
-Requires-Dist: numpy
-Requires-Dist: pandas
-Requires-Dist: plotly
-Requires-Dist: pyaml
-Requires-Dist: matplotlib
+
+UNKNOWN
+

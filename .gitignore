@@ -6,3 +6,4 @@ cscope.out
 # also ignore any build directories
 */build
 README-Install.md
+.DS-Store
