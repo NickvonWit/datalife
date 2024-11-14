@@ -13,7 +13,7 @@ import argparse
 
 from datalife.analyze import DataLife
 from datalife.sankeydata import SankeyData
-from generate_plots import Evaluate
+from datalife.generate_plots import Evaluate
 
 datalife_help = '''
 datalife-analyze produces data flow lifecycle (DFL) graph to guide

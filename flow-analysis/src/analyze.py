@@ -52,6 +52,7 @@ class DataLife(object):
             return
         
         self.stat_path = spath
+        self.wf_tasknames = self.set_wf_tasknames(os.listdir(spath))
         self._read_stat_with_wf_tasks()
         
 
