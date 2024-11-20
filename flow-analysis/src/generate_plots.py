@@ -38,7 +38,7 @@ class Evaluate:  # Changed class name to follow convention
 
         sd = SankeyData()
         sd.import_graph(caterpillar)
-        sd.plot(options={'no_label':True, 'save_image':output + self.ctree})
+        sd.plot(options={'no_label':False, 'save_image':output + self.ctree})
 
 
     def create_dfl(self, output):

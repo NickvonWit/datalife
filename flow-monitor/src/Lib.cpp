@@ -253,11 +253,13 @@ int open(const char *pathname, int flags, ...) {
   Timer::Metric metric = (flags & O_WRONLY || flags & O_RDWR) ? Timer::Metric::out_open : Timer::Metric::in_open;
     
   std::vector<std::string> patterns;
+  patterns.push_back("*.fits");
   patterns.push_back("*.h5");
   patterns.push_back("*.vcf");
   patterns.push_back("*.fna");
   patterns.push_back("*.*.bt2");
-  patterns.push_back("*.tar.gz");
+  patterns.push_back("*.fastaq");
+  patterns.push_back("*.gz");
   patterns.push_back("*.txt");
   patterns.push_back("*.lht");
   patterns.push_back("*.fasta.amb");
@@ -266,6 +268,12 @@ int open(const char *pathname, int flags, ...) {
   patterns.push_back("*.fasta.pac");
   patterns.push_back("*.fasta.ann");
   patterns.push_back("*.fasta");
+  patterns.push_back("ALL");
+  patterns.push_back("EUR");
+    patterns.push_back("AFR");
+    patterns.push_back("AMR");
+    patterns.push_back("EAS");
+    patterns.push_back("SAS");
   for (auto pattern: patterns) {
     auto ret_val = fnmatch(pattern.c_str(), pathname, 0);
     if (ret_val == 0) {
@@ -287,20 +295,28 @@ int open64(const char *pathname, int flags, ...) {
 
     Timer::Metric metric = (flags & O_WRONLY || flags & O_RDWR) ? Timer::Metric::out_open : Timer::Metric::in_open;
 
-    std::vector<std::string> patterns;
-    patterns.push_back("*.h5");
-    patterns.push_back("*.vcf");
-    patterns.push_back("*.tar.gz");
-    patterns.push_back("*.txt");
-    patterns.push_back("*.lht");
-    patterns.push_back("*.stf");
-    patterns.push_back("*.out");
-    patterns.push_back("*.fasta.amb");
-    patterns.push_back("*.fasta.sa");
-    patterns.push_back("*.fasta.bwt");
-    patterns.push_back("*.fasta.pac");
-    patterns.push_back("*.fasta.ann");
-    patterns.push_back("*.fasta");
+  std::vector<std::string> patterns;
+  patterns.push_back("*.fits");
+  patterns.push_back("*.h5");
+  patterns.push_back("*.vcf");
+  patterns.push_back("*.fna");
+  patterns.push_back("*.*.bt2");
+  patterns.push_back("*.fastaq");
+  patterns.push_back("*.gz");
+  patterns.push_back("*.txt");
+  patterns.push_back("*.lht");
+  patterns.push_back("*.fasta.amb");
+  patterns.push_back("*.fasta.sa");
+  patterns.push_back("*.fasta.bwt");
+  patterns.push_back("*.fasta.pac");
+  patterns.push_back("*.fasta.ann");
+  patterns.push_back("*.fasta");
+  patterns.push_back("ALL");
+  patterns.push_back("EUR");
+    patterns.push_back("AFR");
+    patterns.push_back("AMR");
+    patterns.push_back("EAS");
+    patterns.push_back("SAS");
 
     for (auto pattern: patterns) {
         auto ret_val = fnmatch(pattern.c_str(), pathname, 0);
@@ -348,16 +364,27 @@ int openat(int dirfd, const char *pathname, int flags, ...) {
 
   DPRINTF("Openat %s: \n", pathname);
   std::vector<std::string> patterns;
+  patterns.push_back("*.fits");
   patterns.push_back("*.h5");
   patterns.push_back("*.vcf");
-  patterns.push_back("*.tar.gz");
+  patterns.push_back("*.fna");
+  patterns.push_back("*.*.bt2");
+  patterns.push_back("*.fastaq");
+  patterns.push_back("*.gz");
   patterns.push_back("*.txt");
-    patterns.push_back("*.fasta.amb");
-    patterns.push_back("*.fasta.sa");
-    patterns.push_back("*.fasta.bwt");
-    patterns.push_back("*.fasta.pac");
-    patterns.push_back("*.fasta.ann");
-    patterns.push_back("*.fasta");
+  patterns.push_back("*.lht");
+  patterns.push_back("*.fasta.amb");
+  patterns.push_back("*.fasta.sa");
+  patterns.push_back("*.fasta.bwt");
+  patterns.push_back("*.fasta.pac");
+  patterns.push_back("*.fasta.ann");
+  patterns.push_back("*.fasta");
+  patterns.push_back("ALL");
+  patterns.push_back("EUR");
+    patterns.push_back("AFR");
+    patterns.push_back("AMR");
+    patterns.push_back("EAS");
+    patterns.push_back("SAS");
   for (auto pattern: patterns) {
     auto ret_val = fnmatch(pattern.c_str(), pathname, 0);
     if (ret_val == 0) {
@@ -378,17 +405,24 @@ int monitorClose(MonitorFile *file, unsigned int fp, int fd) {
   patterns.push_back("*.fits");
   patterns.push_back("*.h5");
   patterns.push_back("*.vcf");
-  patterns.push_back("*.*.bt2");
   patterns.push_back("*.fna");
-  patterns.push_back("*.tar.gz");
+  patterns.push_back("*.*.bt2");
+  patterns.push_back("*.fastaq");
+  patterns.push_back("*.gz");
   patterns.push_back("*.txt");
   patterns.push_back("*.lht");
-    patterns.push_back("*.fasta.amb");
-    patterns.push_back("*.fasta.sa");
-    patterns.push_back("*.fasta.bwt");
-    patterns.push_back("*.fasta.pac");
-    patterns.push_back("*.fasta.ann");
-    patterns.push_back("*.fasta");
+  patterns.push_back("*.fasta.amb");
+  patterns.push_back("*.fasta.sa");
+  patterns.push_back("*.fasta.bwt");
+  patterns.push_back("*.fasta.pac");
+  patterns.push_back("*.fasta.ann");
+  patterns.push_back("*.fasta");
+  patterns.push_back("ALL");
+  patterns.push_back("EUR");
+    patterns.push_back("AFR");
+    patterns.push_back("AMR");
+    patterns.push_back("EAS");
+    patterns.push_back("SAS");
 
   for (auto pattern: patterns) {
     auto ret_val = fnmatch(pattern.c_str(), file->name().c_str(), 0);
@@ -634,17 +668,26 @@ FILE *fopen(const char *__restrict fileName, const char *__restrict modes) {
 
   std::vector<std::string> patterns;
   patterns.push_back("*.fits");
-  patterns.push_back("*.*.bt2");
+  patterns.push_back("*.h5");
+  patterns.push_back("*.vcf");
   patterns.push_back("*.fna");
-  patterns.push_back("*.fastq");
+  patterns.push_back("*.*.bt2");
+  patterns.push_back("*.fastaq");
+  patterns.push_back("*.gz");
+  patterns.push_back("*.txt");
   patterns.push_back("*.lht");
-  patterns.push_back("*.tar.gz");
-    patterns.push_back("*.fasta.amb");
-    patterns.push_back("*.fasta.sa");
-    patterns.push_back("*.fasta.bwt");
-    patterns.push_back("*.fasta.pac");
-    patterns.push_back("*.fasta.ann");
-    patterns.push_back("*.fasta");
+  patterns.push_back("*.fasta.amb");
+  patterns.push_back("*.fasta.sa");
+  patterns.push_back("*.fasta.bwt");
+  patterns.push_back("*.fasta.pac");
+  patterns.push_back("*.fasta.ann");
+  patterns.push_back("*.fasta");
+  patterns.push_back("ALL");
+  patterns.push_back("EUR");
+    patterns.push_back("AFR");
+    patterns.push_back("AMR");
+    patterns.push_back("EAS");
+    patterns.push_back("SAS");
   for (auto pattern: patterns) {
     auto ret_val = fnmatch(pattern.c_str(), fileName, 0);
     if (ret_val == 0) {
@@ -661,17 +704,26 @@ FILE *fopen64(const char *__restrict fileName, const char *__restrict modes) {
   Timer::Metric metric = (modes[0] == 'r') ? Timer::Metric::in_fopen : Timer::Metric::out_fopen;
   std::vector<std::string> patterns;
   patterns.push_back("*.fits");
-  patterns.push_back("*.*.bt2");
+  patterns.push_back("*.h5");
+  patterns.push_back("*.vcf");
   patterns.push_back("*.fna");
-  patterns.push_back("*.fastq");
+  patterns.push_back("*.*.bt2");
+  patterns.push_back("*.fastaq");
+  patterns.push_back("*.gz");
+  patterns.push_back("*.txt");
   patterns.push_back("*.lht");
-  patterns.push_back("*.tar.gz");
-    patterns.push_back("*.fasta.amb");
-    patterns.push_back("*.fasta.sa");
-    patterns.push_back("*.fasta.bwt");
-    patterns.push_back("*.fasta.pac");
-    patterns.push_back("*.fasta.ann");
-    patterns.push_back("*.fasta");
+  patterns.push_back("*.fasta.amb");
+  patterns.push_back("*.fasta.sa");
+  patterns.push_back("*.fasta.bwt");
+  patterns.push_back("*.fasta.pac");
+  patterns.push_back("*.fasta.ann");
+  patterns.push_back("*.fasta");
+  patterns.push_back("ALL");
+  patterns.push_back("EUR");
+    patterns.push_back("AFR");
+    patterns.push_back("AMR");
+    patterns.push_back("EAS");
+    patterns.push_back("SAS");
   for (auto pattern: patterns) {
     auto ret_val = fnmatch(pattern.c_str(), fileName, 0);
     if (ret_val == 0) {
@@ -688,17 +740,26 @@ int monitorFclose(MonitorFile *file, unsigned int pos, int fd, FILE *fp) {
 #ifdef TRACKFILECHANGES
   std::vector<std::string> patterns;
   patterns.push_back("*.fits");
-  patterns.push_back("*.lht");
-  patterns.push_back("*.tar.gz");
-  patterns.push_back("*.*.bt2");
+  patterns.push_back("*.h5");
+  patterns.push_back("*.vcf");
   patterns.push_back("*.fna");
-  patterns.push_back("*.fastq");
+  patterns.push_back("*.*.bt2");
+  patterns.push_back("*.fastaq");
+  patterns.push_back("*.gz");
+  patterns.push_back("*.txt");
+  patterns.push_back("*.lht");
   patterns.push_back("*.fasta.amb");
   patterns.push_back("*.fasta.sa");
   patterns.push_back("*.fasta.bwt");
   patterns.push_back("*.fasta.pac");
   patterns.push_back("*.fasta.ann");
   patterns.push_back("*.fasta");
+  patterns.push_back("ALL");
+  patterns.push_back("EUR");
+    patterns.push_back("AFR");
+    patterns.push_back("AMR");
+    patterns.push_back("EAS");
+    patterns.push_back("SAS");
   for (auto pattern: patterns) {
     auto ret_val = fnmatch(pattern.c_str(), file->name().c_str(), 0);
     if (ret_val == 0) {
